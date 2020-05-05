@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
+namespace ExchangeRates.Integration.Clients.Models
+{
+    /// <summary>
+    ///     Dto with specific data about currencies rate
+    /// </summary>
+    public class CurrenciesDto
+    {
+        [JsonProperty("base")] public Currency BaseCurrency { get; set; }
+
+        [JsonProperty("rates")] public IDictionary<Currency, decimal> Rates { get; set; }
+
+        [JsonProperty("date")] public DateTime CurrentDate { get; set; }
+    }
+}
