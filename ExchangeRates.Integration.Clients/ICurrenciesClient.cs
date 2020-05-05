@@ -4,7 +4,6 @@ using Refit;
 
 namespace ExchangeRates.Integration.Clients
 {
-    //            var currenciesApi = RestService.For<ICurrenciesClient>("https://api.ratesapi.io/");
     public interface ICurrenciesClient
     {
         [Get("/api/latest")]
