@@ -1,6 +1,6 @@
 ﻿FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 
-COPY ExchangeRates.Api/bin/Release/netcoreapp3.1/publish/ app/
+COPY ExchangeRates.Api/bin/Release/netcoreapp3.1/ app/
 WORKDIR /app
 
 
