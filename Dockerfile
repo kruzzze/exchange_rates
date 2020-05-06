@@ -8,10 +8,10 @@ COPY . .
 RUN dotnet restore ExchangeRates.Api/ExchangeRates.Api.csproj
 COPY . .
 WORKDIR /src
-RUN dotnet build ExchangeRates.Api.csproj -c Release -o /app
+RUN dotnet build ExchangeRates.Api/ExchangeRates.Api.csproj -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish ExchangeRates.Api.csproj -c Release -o /app
+RUN dotnet publish ExchangeRates.Api/ExchangeRates.Api.csproj -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
