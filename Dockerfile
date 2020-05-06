@@ -1,8 +1,8 @@
-﻿FROM microsoft/aspnetcore:3.1 AS base
+﻿FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
 WORKDIR /app
 EXPOSE 5050
 
-FROM microsoft/aspnetcore-build:3.1 AS build
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS build
 WORKDIR /src
 COPY ExchangeRates.Api.csproj ExchangeRates.Api.csproj
 RUN dotnet restore ExchangeRates.Api.csproj
