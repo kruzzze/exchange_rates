@@ -19,9 +19,7 @@ namespace Currencies.Api
         }
 
         private IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
@@ -29,6 +27,23 @@ namespace Currencies.Api
 
             services.Configure<KestrelServerOptions>(
                 Configuration.GetSection("Kestrel"));
+
+            services.AddSwaggerDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "Exchange Rates";
+                    document.Info.Description = "A simple ASP.NET Core web API";
+                    document.Info.TermsOfService = "None";
+                    document.Info.Contact = new NSwag.OpenApiContact
+                    {
+                        Name = "Igor Kruze",
+                        Email = "kruzzze@mail.ru",
+                        Url = null
+                    };
+                };
+            });
             
             services.AddRefitClient<ICurrenciesClient>()
                 .ConfigureHttpClient(c => c.BaseAddress = new Uri(Configuration.GetSection("ClientsEndpoints:currenciesClients").Value));
@@ -40,6 +55,8 @@ namespace Currencies.Api
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseRouting();
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseEndpoints(endpoints =>
             {
