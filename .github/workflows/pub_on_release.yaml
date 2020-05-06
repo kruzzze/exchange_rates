@@ -1,8 +1,12 @@
 name: docker
 
 on:
- release:
-   types: [published]
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  release:
+    types: [published]
 
 env:
  LOGIN: ${{ secrets.DOCKER_LOGIN }}
