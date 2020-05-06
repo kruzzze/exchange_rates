@@ -25,7 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build  
     steps:
-     - name: Setup dotnet core
      - name: Login to docker.io
        run:  echo ${{ secrets.DOCKER_PWD }} | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
      - uses: actions/checkout@master
