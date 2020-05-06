@@ -2,7 +2,7 @@
 WORKDIR /app
 EXPOSE 5050
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
 COPY ExchangeRates.Api/ExchangeRates.Api.csproj ExchangeRates.Api.csproj
 RUN dotnet restore ExchangeRates.Api.csproj
