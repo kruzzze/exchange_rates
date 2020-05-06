@@ -4,8 +4,8 @@ EXPOSE 5050
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
-COPY ExchangeRates.Api/ExchangeRates.Api.csproj ExchangeRates.Api.csproj
-RUN dotnet restore ExchangeRates.Api.csproj
+COPY . .
+RUN dotnet restore ExchangeRates.Api/ExchangeRates.Api.csproj
 COPY . .
 WORKDIR /src
 RUN dotnet build ExchangeRates.Api.csproj -c Release -o /app
